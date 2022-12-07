@@ -1,12 +1,41 @@
 <% @books.each do |book| %>
+
+<h2>User info</h2>
+
   <div>
-    <%= link_to book_path(book.id) do %>
-      <%= image_tag book.get_image %>
-    <% end %>
 
-    <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
-
-    <p>ユーザーネーム：<%= book.user.name %></p>
+    <p>name：<%= book.user.name %></p>
+    <p>introduction： <%= book.user.introduction%>
 
   </div>
+  
+  
+
+   <h2>New Book</h2>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @book,url:'/books',method: :post do |f| %>
+<div class="field">
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+</div>
+
+<div class="field">
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+</div>
+
+  <%= f.submit 'Create Book' %>
+
+<% end %>
+
+
 <% end %>
