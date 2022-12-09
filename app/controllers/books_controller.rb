@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
     if @book.save
 
-      flash[:notice] = "Book was successfully created."
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
 
     else
