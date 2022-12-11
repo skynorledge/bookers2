@@ -1,5 +1,4 @@
-<% @books.each do |book| %>
-
+<%= flash[:notice] %>
 
 <div class = "container">
   <div class = "row">
@@ -10,37 +9,36 @@
     <h2>User info</h2>
 
 
-    <% if book.profile_image.attached? %>
-      <%= image_tag book.image, size: "100x100" %>
-    <% else %>
-      <%= image_tag 'images/no_image', size: "100x100" %>
-    <% end %>
-
+    <%= image_tag @user.get_profile_image(100,100) %>
 
 
     <div>
 
-      <p>name：<%= book.user.name %></p>
-      <p>introduction： <%= book.user.introduction %></p>
+      <p>name：<%= @user.name %></p>
+      <p>introduction： <%= @user.introduction %></p>
 
     </div>
 
+
+    <%= link_to edit_user_path(@user.id) ,class: "btn btn-outline-secondary btn-block w-50 mt-2" do %>
+    <i class="fas fa-user-cog"></i>
+    <% end %>
 
     <h2>New Book</h2>
 
     <%= form_with model: @book,url:'/books',method: :post do |f| %>
 
-    <div>
       <p>Title</p>
       <%= f.text_field :title %>
-    </div>
 
-    <div>
       <p>Opinion</p>
       <%= f.text_area :body %>
-    </div>
 
-    <%= f.submit 'Create Book' %>
+      <br>
+
+    <%= f.submit 'Create Book' ,class:"btn btn-success" %>
+
+    <% end %>
 
     </div>
 
@@ -48,17 +46,37 @@
 
         <h2>Books</h2>
 
-        <p>Title</p>
-          <p><%= @book.title %></p>
+        <table class = "table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th colspan="1"></th>
+              <th>Title</th>
+              <th>Opinion</th>
+            </tr>
+          </thead>
 
-        <p>Opinion</p>
-          <p><%= @book.body %></p>
+          <tbody>
+
+          <% @books.each do |book| %>
+
+            <tr>
+              <td>
+                  <%= image_tag book.user.get_profile_image(100,100) %>
+              </td>
+
+              <td><%= book.title %></td>
+
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
 
       </div>
+
   </div>
 </div>
 
 
-    <% end %>
 
- <% end %>
+
