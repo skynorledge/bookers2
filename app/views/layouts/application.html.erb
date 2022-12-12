@@ -12,7 +12,6 @@
   </head>
 
 
-
    <body class="d-flex flex-column vh-80">
     <header class="bg-dark">
       <nav class="navbar navbar-expand-md navbar-light">
@@ -30,19 +29,19 @@
 
 
             <li class="nav-item">
-              <%= link_to  books_path , class:'nav-link text-white' do %>
+              <%= link_to  user_session_path, class:'nav-link text-white' do %>
               <i class="fas fa-home"></i>Home
               <% end %>
             </li>
 
             <li class="nav-item">
-              <%= link_to user_path(current_user.id), class:'nav-link text-white' do %>
+              <%= link_to  users_path, class:'nav-link text-white' do %>
               <i class="fas fa-users"></i>Users
               <% end %>
             </li>
 
             <li class="nav-item">
-              <%= link_to book_path(current_user.id), class:'nav-link text-white' do %>
+              <%= link_to books_path, class:'nav-link text-white' do %>
               <i class="fas fa-book-open"></i>Books
               <% end %>
             </li>
@@ -59,7 +58,7 @@
 
 
             <li class="nav-item">
-              <%= link_to  books_path , class:'nav-link text-white' do %>
+              <%= link_to  "/" , class:'nav-link text-white' do %>
               <i class="fas fa-home"></i>Home
               <% end %>
             </li>
@@ -92,9 +91,9 @@
 
 
     <main class="mb-auto">
+    <%= flash[:notice] %>
     <%= yield %>
     </main>
-
 
 
 
