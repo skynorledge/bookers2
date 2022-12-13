@@ -1,4 +1,8 @@
-<div class="mx-auto" style="width: 300px;">
+<p id = "notice"></p>
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
 
 
     <% if @user.errors.any? %>
@@ -21,14 +25,14 @@
 
     <p>Name</p>
 
-    <%= f.text_field :name%>
+    <%= f.text_field :name, size: "60×40" %>
 
     <p>Image</p>
     <%= f.file_field :profile_image, accept: "image/*" %>
 
     <p>Introduction</p>
 
-    <%= f.text_area :introduction %>
+    <%= f.text_area :introduction, size: "63×40" %>
 
     <br>
 
@@ -38,4 +42,6 @@
 
     <% end %>
 
-</div>
+ </div>
+    </div>
+      <div>
