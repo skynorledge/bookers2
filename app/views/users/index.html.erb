@@ -18,7 +18,7 @@
 
     <h2>User info</h2>
 
-    <%= image_tag @user.get_profile_image(100,100)%>
+   <%= image_tag @user.get_profile_image(100,100) %>
 
 
     <table class = "table">
@@ -44,7 +44,7 @@
     </div>
 
 
-    <h2>New Book</h2>
+    <h2>New book</h2>
 
     <%= form_with model: @book,url:'/books',method: :post do |f| %>
 
